@@ -1,5 +1,5 @@
 from quadtree import Point, Square, Quadtree
-import numpy
+from numpy import random
 from matplotlib import pyplot
 
 l = 10
@@ -8,11 +8,11 @@ qtree = Quadtree(sq)
 
 points = list()
 for i in range(100):
-    p = Point(numpy.random.uniform(0, l), numpy.random.uniform(0, l))
+    p = Point(random.uniform(0, l), random.uniform(0, l))
     points.append(p)
     qtree.insert(p)
 
-area = Square(3.2, 6, 2.3)
+area = Square(random.uniform(0, l), random.uniform(0, l), random.uniform(3))
 points_in_area = qtree.query(area)
 
 pyplot.figure()
@@ -25,5 +25,7 @@ area.show("red")
 pyplot.xlim(-0.5, l + 0.5)
 pyplot.ylim(-0.5, l + 0.5)
 pyplot.gca().set_aspect('equal')
+pyplot.savefig("img.png")
 pyplot.show()
+pyplot.close()
 
