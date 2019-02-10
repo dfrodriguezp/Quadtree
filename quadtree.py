@@ -97,14 +97,10 @@ class Quadtree(object):
         if (not self.divided):
             return points
 
-        for p in self.northwest.query(range):
-            points.append(p)
-        for p in self.northeast.query(range):
-            points.append(p)
-        for p in self.southwest.query(range):
-            points.append(p)
-        for p in self.southeast.query(range):
-            points.append(p)
+        points += self.northwest.query(range) 
+        points += self.northeast.query(range) 
+        points += self.southwest.query(range) 
+        points += self.southeast.query(range) 
 
         return points
 
@@ -119,6 +115,3 @@ class Quadtree(object):
             self.northeast.show()
             self.southwest.show()
             self.southeast.show()
-
-        # for p in self.points:
-        #     pyplot.scatter(p.x, p.y, color="red")
